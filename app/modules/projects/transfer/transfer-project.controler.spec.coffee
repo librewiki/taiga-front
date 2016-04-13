@@ -79,6 +79,22 @@ describe "TransferProject", ->
 
         provide.value("$tgConfirm", mocks.tgConfirm)
 
+    _mockTgLoading = ->
+        mocks.tgLoading = sinon.stub()
+        mocks.tgLoadingTarget = sinon.stub()
+        mocks.tgLoadingStart = sinon.stub()
+        mocks.tgLoadingFinish = sinon.stub()
+        mocks.tgLoading.returns ({
+            target: mocks.tgLoadingTarget
+        })
+        mocks.tgLoadingTarget.returns ({
+            start: mocks.tgLoadingStart
+        })
+        mocks.tgLoadingStart .returns ({
+            finish: mocks.tgLoadingFinish
+        })
+        provide.value("$tgLoading", mocks.tgLoading)
+
     _mocks = () ->
         module ($provide) ->
             provide = $provide
@@ -90,6 +106,7 @@ describe "TransferProject", ->
             _mockTgNavUrls()
             _mockTranslate()
             _mockTgConfirm()
+            _mockTgLoading()
             return null
 
     _inject = (callback) ->
@@ -242,10 +259,15 @@ describe "TransferProject", ->
 
           ctrl = $controller("TransferProjectController")
           ctrl.project = project
+          event = {
+              currentTarget: "currentTarget"
+          }
           ctrl.initialize().then () ->
-              ctrl.transferAccept("TOKEN", "this is my reason").then ->
+              ctrl.transferAccept("TOKEN", "this is my reason", event).then ->
                   expect(mocks.location.path).to.be.calledWith("/project/slug/")
                   expect(mocks.tgConfirm.notify).to.be.calledWith("success", "ACCEPTED_PROJECT_OWNERNSHIP", '', 5000)
+                  expect(mocks.tgLoadingStart).to.be.calledOnce
+                  expect(mocks.tgLoadingFinish).to.be.calledOnce
 
               done()
 
@@ -262,14 +284,18 @@ describe "TransferProject", ->
           mocks.currentUserService.getUser.returns(user)
           mocks.projectsService.transferValidateToken.withArgs(1, "TOKEN").promise().resolve()
           mocks.projectsService.transferReject.withArgs(1, "TOKEN", "this is my reason").promise().resolve()
-          mocks.tgNavUrls.resolve.withArgs("project-admin-project-profile-details", {project: "slug"}).returns("/project/slug/")
+          mocks.tgNavUrls.resolve.withArgs("home", {project: "slug"}).returns("/")
           mocks.translate.instant.withArgs("ADMIN.PROJECT_TRANSFER.REJECTED_PROJECT_OWNERNSHIP").returns("REJECTED_PROJECT_OWNERNSHIP")
 
           ctrl = $controller("TransferProjectController")
           ctrl.project = project
+          event = {
+              currentTarget: "currentTarget"
+          }
           ctrl.initialize().then () ->
-              ctrl.transferReject("TOKEN", "this is my reason").then ->
-                  expect(mocks.location.path).to.be.calledWith("/project/slug/")
+              ctrl.transferReject("TOKEN", "this is my reason", event).then ->
+                  expect(mocks.location.path).to.be.calledWith("/")
                   expect(mocks.tgConfirm.notify).to.be.calledWith("success", "REJECTED_PROJECT_OWNERNSHIP", '', 5000)
-
+                  expect(mocks.tgLoadingStart).to.be.calledOnce
+                  expect(mocks.tgLoadingFinish).to.be.calledOnce
               done()
