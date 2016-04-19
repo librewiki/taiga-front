@@ -1,6 +1,6 @@
 # Tagiga Front #
 이 프로젝트는 taiga.io의 한국어 번역을 위해 공개된 프로젝트 입니다.
-/Users/seyriz/Projects/taiga/taiga-front/app/locales/taiga/locale-ko-kr.json
+taiga-front/app/locales/taiga/locale-ko-kr.json
 파일을 한국어화 시키면 됩니다.
 
 또한 중복작업을 막기 위해 [리브레위키 이슈트래커](https://issue.librewiki.net/)에서 협업을 진행합니다.
