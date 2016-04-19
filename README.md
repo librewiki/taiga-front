@@ -1,6 +1,6 @@
 # Tagiga Front #
 
-[![translate status](https://www.transifex.com/projects/p/taiga_front/resource/locale-ko-krjson/chart/image_png)(https://www.transifex.com/librewiki/taiga_front/language/ko_KR/ "transifex")]
+[![translate status](https://www.transifex.com/projects/p/taiga_front/resource/locale-ko-krjson/chart/image_png)](https://www.transifex.com/librewiki/taiga_front/language/ko_KR/ "transifex")]
 
 이 프로젝트는 taiga.io의 한국어 번역을 위해 공개된 프로젝트 입니다.
 taiga-front/app/locales/taiga/locale-ko-kr.json
