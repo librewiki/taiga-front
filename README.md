@@ -1,5 +1,28 @@
-# Taiga Front #
+# Tagiga Front #
+이 프로젝트는 taiga.io의 한국어 번역을 위해 공개된 프로젝트 입니다.
+/Users/seyriz/Projects/taiga/taiga-front/app/locales/taiga/locale-ko-kr.json
+파일을 한국어화 시키면 됩니다.
 
+또한 중복작업을 막기 위해 [리브레위키 이슈트래커](https://issue.librewiki.net/)에서 협업을 진행합니다.
+
+
+# 사전 준비
+
+번역을 위해서는 [github](https://github.com) 계정과 리브레 위키 이슈 트래커 계정이 필요합니다.
+
+# 번역
+
+저장소를 로컬에 clone하여 번역하든, 웹에서 번역하든 방법은 같습니다. PhabricatorKoreanTranslation.php 파일을 수정하고, 커밋한 후, 푸시하면 됩니다. 저장소 권한이 없을 경우 포크 저장소에 푸시한 후 풀 리퀘스트를 보내주세요. 여러 개의 풀 리퀘스트를 보내주시면 푸시 권한을 드립니다.
+
+# 용어집 및 주의사항
+[리브레 위키 이슈 트래커 위키](https://issue.librewiki.net/w/phabricatortranslation/)로 이전되었습니다.
+
+# 검토자를 위한 도움말
+
+```master``` 브랜치에 직접 푸시하지 마세요! 모든 번역은 별도의 브랜치에서 작업된 후 Pull Request를 통한 검토를 거쳐야 합니다.
+번역에 문제가 없다면 ```@homu r+```로 봇에게 머지를 지시해 주세요. GitHub의 Merge 버튼을 사용하지 마세요.
+
+# Taiga Front #
 ![Kaleidos Project](http://kaleidos.net/static/img/badge.png "Kaleidos Project")
 [![Managed with Taiga](https://taiga.io/media/support/attachments/article-22/banner-gh.png)](https://taiga.io "Managed with Taiga")
 [![Build Status](https://travis-ci.org/taigaio/taiga-front.svg?branch=public-header-bar)](https://travis-ci.org/taigaio/taiga-front)
